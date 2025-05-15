@@ -1,0 +1,281 @@
+
+@font-face {
+    font-family: 'Allerta Stencil'; /* This is the name you'll use to apply the font */
+    src: url('../HTML/Allerta Stencil.ttf') format('truetype'); /* Path to your font file */
+    /* You can add more src lines for different font weights/styles if you have them */
+    /* e.g., font-weight: bold; src: url('../HTML/AllertaStencil-Bold.ttf') format('truetype'); */
+    font-weight: normal;
+    font-style: normal;
+}
+/* Universal box-sizing & full height html */
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit; /* Universal border-box inheritance */
+}
+
+body {
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    font-family: 'Allerta Stencil', sans-serif;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent body scrolling */
+}
+
+.HeaderTitleContainer {
+    background-color: #000000;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    flex-shrink: 0; /* Header: No shrink */
+}
+
+.SiteTitle {
+    color: #ff0062;
+    font-size: 28px;
+    font-weight: bold;
+    
+}
+
+.NavigationBar {
+    background-color: #000000;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #222222;
+    border-top: 1px solid #222222;
+    flex-shrink: 0;
+    
+}
+
+.NavigationLinks {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.NavigationLinks li {
+    margin: 0 15px;
+}
+
+.NavigationLinks li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.NavigationLinks li a:hover {
+    color: #cccccc;
+}
+
+.grid-container {
+    flex-grow: 1; /* Grid: Expand to fill space */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Grid: 4 equal width columns */
+    grid-template-rows: repeat(4, 1fr);    /* Grid: 4 equal height rows */
+    gap: 10px;
+    min-height: 0; /* Grid: Flex overflow fix */
+    padding-top: 20px;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    padding-bottom: 20px;
+}
+
+/* --- KEYFRAME ANIMATION FOR FADE-IN --- */
+@keyframes fadeInCard {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.card {
+    position: relative; /* Card: Overlay positioning context */
+    border-radius: 10px;       /* Card: Default rounded corners */
+    background-color: rgb(15, 15, 15); /* Card: Fallback background */
+    overflow: hidden; /* Card: Clip content */
+    padding: 0;
+    aspect-ratio: 16 / 9; /* Card: Maintain aspect ratio */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out, border-radius 0.3s ease-in-out, filter 0.3s ease-in-out;
+
+    /* --- FOR FADE-IN ENTRY ANIMATION --- */
+    opacity: 0; /* Start hidden before animation */
+    animation-name: fadeInCard;
+    animation-duration: 0.7s; /* How long the fade takes */
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards; /* Keep opacity:1 after animation */
+    animation-delay: 0.1s; /* Optional: slight delay before cards start fading in */
+}
+
+.card:hover {
+    transform: scale(0.9);
+    border-radius: 30px;
+    filter: sepia(40%);
+}
+
+
+.card img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 0;
+    box-sizing: border-box;
+}
+
+.card-title {
+    display: block;
+    color: #ff0062; /* Title: Text color */
+    font-size: 1.6vw; /* Title: Responsive font size */
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Title: Text shadow (optional) */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard */
+}
+
+/* MQ: Smaller screens */
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 2.2vw; /* Title: Larger relative font */
+    }
+    .card-overlay {
+        padding: 6px 0; /* Overlay: Less padding */
+    }
+}
+/* MQ: Larger screens */
+@media (min-width: 1200px) {
+    .card-title {
+        font-size: 1.2vw; /* Title: Smaller relative font */
+    }
+}
+/* MQ: Very small screens */
+@media (max-width: 480px) {
+    .card-title {
+        font-size: 2.8vw; /* Title: Even larger relative font */
+    }
+    .card-overlay {
+        padding: 4px 0; /* Overlay: Minimal padding */
+    }
+    .grid-container {
+        /* Consider 2 columns for very small screens */
+        /* grid-template-columns: repeat(2, 1fr); */
+        /* grid-template-rows: repeat(8, 1fr); */
+    }
+}
+/* style.css - ADD THESE NEW STYLES */
+
+/* ... (all your CSS above .ImageTabNavigationBar remains the same) ... */
+
+/* Styles for the Image Tab Navigation Bar */
+.ImageTabNavigationBar {
+    background-color: #000000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Ensure this doesn't shrink */
+}
+
+.ImageTabLinks {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.ImageTabLinks li {
+    margin: 0 10px;
+}
+
+.tab-button {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px 15px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tab-button:hover {
+    color: white;
+    border-color: #ff0062;
+}
+
+.tab-toggle {
+    display: none;
+}
+
+/* Image Content Area Styling - MODIFIED FOR FULL SCREEN FIT */
+.ImageTabContentContainer {
+    flex-grow: 1;
+    display: flex;
+    padding: 1px;
+    min-height: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.tab-content {
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center;
+}
+
+/* Show the active tab-content - This rule must come AFTER the default display:none */
+#tab1-toggle:checked ~ .ImageTabContentContainer #tab1-content,
+#tab2-toggle:checked ~ .ImageTabContentContainer #tab2-content,
+#tab3-toggle:checked ~ .ImageTabContentContainer #tab3-content {
+    display: flex;
+}
+
+
+.tab-content img {
+    max-width: 100%;
+    max-height:100%;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    border-radius: 8px;
+
+}
+
+
+
+/* --- Checkbox Hack: Style for the active tab button --- */
+#tab1-toggle:checked ~ .ImageTabNavigationBar .ImageTabLinks label[for="tab1-toggle"],
+#tab2-toggle:checked ~ .ImageTabNavigationBar .ImageTabLinks label[for="tab2-toggle"],
+#tab3-toggle:checked ~ .ImageTabNavigationBar .ImageTabLinks label[for="tab3-toggle"] {
+    color: #ff0062;
+    font-weight: bold;
+    border-bottom: 2px solid #ff0062;
+}
